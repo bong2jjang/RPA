@@ -1,0 +1,98 @@
+# VibeCoding 초기 실행 명령 세트 – Week 1
+
+## 🎯 목적
+AI 기반 다국어 자동관리 웹시스템의 개발 환경 초기화 및 구조 구축
+
+---
+
+## 🧩 1. 전체 Context 로드
+@System
+프로젝트 이름: "AI 기반 다국어 자동관리 웹시스템"
+역할 구분: FE(Vue3), BE(FastAPI), Docs(자동화 문서)
+참조 문서: .vscode/vibecoding_task_plan.txt
+모든 역할은 vibecoding.json의 설정에 따라 동작
+이후 단계별 Task를 순서대로 수행
+
+---
+
+## 🧱 2. BE 초기화 (FastAPI 구조 생성)
+@BE
+다음 작업을 수행하라:
+
+1️⃣ FastAPI 앱 초기화
+- 경로: be/app/main.py
+- FastAPI 인스턴스 생성
+- `/health` 엔드포인트 추가 (상태 체크용)
+
+2️⃣ core/config.py 생성
+- 환경 변수 로드 (pydantic BaseSettings)
+- DB_URL, REDIS_URL, AI_API_KEY 포함
+
+3️⃣ requirements.txt 업데이트
+- fastapi
+- uvicorn
+- sqlalchemy
+- alembic
+- redis
+- pydantic
+
+4️⃣ 실행 테스트
+- `uvicorn app.main:app --reload` 명령으로 실행 확인
+
+---
+
+## 💻 3. FE 초기화 (Vue3 구조 생성)
+@FE
+다음 작업을 수행하라:
+
+1️⃣ Vue3 프로젝트 초기화
+- 경로: fe/
+- 기본 파일: src/main.js, src/router/index.js, src/store/index.js
+
+2️⃣ 기본 페이지 3개 생성
+- DashboardView.vue
+- ProjectListView.vue
+- SettingsView.vue
+
+3️⃣ 공용 레이아웃 생성
+- App.vue: Header, Sidebar, RouterView 구조
+
+4️⃣ package.json 확인 및 의존성 추가
+- vue-router
+- pinia
+- axios
+
+5️⃣ `npm run dev`로 개발 서버 실행 확인
+
+---
+
+## 📘 4. Docs 설정 (자동화 메뉴얼 생성 테스트)
+@DOC
+다음 작업을 수행하라:
+
+1️⃣ scripts/generate_docs.py 파일 실행 테스트
+- FE/BE 주석 기반 문서 생성 확인
+- 출력 파일: docs/auto-generated.md
+
+2️⃣ docs/dev-guide.md 업데이트
+- FastAPI, Vue3 실행 방법 기록
+- 프로젝트 구조도 포함
+
+3️⃣ 메뉴얼 자동 생성 로직을 문서화
+- generate_docs.py 내부에 @DOC 주석 추가
+
+---
+
+## 🔄 5. Claude 자동 리뷰 트리거
+@System
+각 역할(FE/BE/DOC)의 결과물을 분석하여
+- 코드 스타일 검토
+- 문서 자동화 반영 여부 확인
+- 개선 사항 요약 후 PRD 반영 제안
+
+---
+
+## ✅ 6. 완료 후 보고
+@System
+모든 Week 1 작업 완료 후, 
+FE/BE/Docs별 진행 결과와 개선 사항을 5줄 이내로 요약해줘.

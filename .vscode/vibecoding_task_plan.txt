@@ -1,0 +1,105 @@
+# AI 기반 다국어 자동관리 웹시스템 개발 - Claude VibeCoding Task Plan
+
+## Step 1: 환경 및 기초 구조 구축
+
+### 목표
+- FE/BE 기본 프로젝트 구조 확립
+- DB/Redis/AI 연동 기본 설정
+- VibeCoding + Claude 역할 테스트
+
+### 작업 리스트
+
+#### BE
+- [ ] FastAPI 프로젝트 초기화 (`be/app/main.py`)
+- [ ] DB 모델 정의 (`Project`, `Language`) + Alembic migration
+- [ ] 기본 CRUD API 생성 (`/projects`, `/languages`)
+- [ ] Redis 연결 테스트 (캐시, 번역 요청용)
+- [ ] AI 번역 서비스 연동 모듈 초기 구조 (`utils/ai_translate.py`)
+- [ ] Claude에게 API 코드 생성 및 리뷰 요청
+
+#### FE
+- [ ] Vue3 프로젝트 초기화 (`fe/src/main.js`, Router, Store)
+- [ ] 기본 페이지 레이아웃 생성 (대시보드, 프로젝트 리스트, 설정)
+- [ ] Pinia 상태 관리 구조 정의
+- [ ] FE Claude 역할 테스트 (`@FE` 주석 인식, Mock API 호출)
+
+#### Docs
+- [ ] 메뉴얼 자동화 스크립트 테스트 (`scripts/generate_docs.py`)
+- [ ] FE/BE 코드 주석 확인 및 Doc 생성 테스트
+- [ ] PRD 참조 문서 로드 테스트
+
+---
+
+## Step 2: 핵심 기능 개발 (1차)
+
+### 목표
+- 프로젝트/언어 관리 기능 구현
+- 기본 AI 번역 기능 연동
+- 사용자 인증/권한 구조 마련
+
+### 작업 리스트
+
+#### BE
+- [ ] 프로젝트/언어 CRUD API 완성 (GET/POST/PUT/DELETE)
+- [ ] 번역 API 엔드포인트 개발
+- [ ] 사용자 인증 (OAuth2/JWT) API 개발
+- [ ] Claude를 활용한 CRUD/서비스 코드 리뷰 및 테스트
+- [ ] BE 문서 주석 강화 (`@BE`, `@BE_API`) → FE와 연동
+
+#### FE
+- [ ] 프로젝트/언어 리스트 화면 + CRUD 화면
+- [ ] 번역 요청 화면 (AI 번역 결과 표시)
+- [ ] 로그인/권한 기반 UI 적용
+- [ ] Mock → 실제 API 연동
+- [ ] Claude에게 UI/컴포넌트 리뷰 요청 및 최적화
+
+#### Docs
+- [ ] 사용자 매뉴얼 작성 (프로젝트 생성, 언어 추가, 번역)
+- [ ] API 문서 자동 생성 테스트 (BE 주석 반영)
+- [ ] 메뉴얼 배포용 Markdown → HTML 변환 테스트
+
+---
+
+## Step 3: 통합, 테스트, QA
+
+### 목표
+- FE-BE 통합 테스트
+- UI/UX 검토 및 개선
+- 문서 자동화 완료
+- 배포 준비
+
+### 작업 리스트
+
+#### 통합
+- [ ] FE에서 실제 BE API 호출 테스트
+- [ ] 번역 기능, CRUD, 로그인/권한 검증
+- [ ] Claude 역할별 리뷰 + 코드 최적화
+
+#### UI/UX
+- [ ] Designer + Claude UI 검토
+- [ ] Storybook / Figma 연동 테스트
+- [ ] 반응형/접근성 체크
+
+#### 문서
+- [ ] FE/BE 문서 최신화
+- [ ] 배포용 메뉴얼 최종 확인
+- [ ] PRD 변경 사항 반영
+
+#### 배포 준비
+- [ ] CI/CD 구성 (GitHub Actions / GitLab CI)
+- [ ] 환경 변수 설정 (DB, Redis, AI API Key)
+- [ ] 최종 QA 완료
+
+---
+
+## Claude + VibeCoding 활용 팁
+1. FE/BE/Docs 역할별 자동 코드/문서 생성
+   - 주석 기반 자동 완성, 리뷰 요청
+2. PRD 및 화면 정의 참조
+   - 변경 사항 발생 시 Claude가 FE/BE 코드 자동 반영
+3. 작업 단위 분리
+   - FE: 컴포넌트, 화면
+   - BE: API, 서비스, DB
+   - Docs: 메뉴얼/배포 문서
+4. 작은 단위로 자주 Commit
+   - Claude 자동 리뷰 → Merge → Docs 갱신

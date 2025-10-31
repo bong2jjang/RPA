@@ -1,0 +1,25 @@
+# @BE Backend Dependencies for AI Multilingual Management System
+
+# FastAPI Framework
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+
+# Database
+sqlalchemy==2.0.36
+alembic==1.14.0
+
+# Redis for caching
+redis==5.2.0
+
+# Data Validation
+pydantic==2.10.3
+pydantic-settings==2.6.1
+
+# Environment Variables
+python-dotenv==1.0.1
+
+# HTTP Client
+httpx==0.28.1
+
+# CORS
+python-multipart==0.0.20
